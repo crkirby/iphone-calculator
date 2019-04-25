@@ -1,0 +1,7 @@
+export const ADD = 'ADD'
+export const BUILD_OPERAND = 'BUILD_OPERAND'
+export const CLEAR = 'CLEAR'
+export const DIVIDE = 'DIVIDE'
+export const MULTIPLY = 'MULTIPLY'
+export const SOLVE = 'SOLVE'
+export const SUBTRACT = 'SUBTRACT'
