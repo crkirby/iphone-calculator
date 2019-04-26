@@ -43,7 +43,7 @@ class Calculator extends Component {
 
 				<div className="row">
 					<div id="zero" className="digits" onClick={() => this.props.buildOperand('0')}>0</div>
-					<div id="decimal" className="digits" onClick={() => console.log('WIP')}>.</div>
+					<div id="decimal" className="digits" onClick={() => this.props.buildOperand('.')}>.</div>
 					<div id="equal" className="operators" onClick={this.props.solve}>=</div>
 				</div>
 

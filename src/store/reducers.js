@@ -1,12 +1,12 @@
 const { ADD, BUILD_OPERAND, CLEAR, DIVIDE, FLIP_SIGN, MULTIPLY, PERCENT, SOLVE, SUBTRACT } = require('./types')
-const defaultState = { currentResult: 0, operandOne: '', operandTwo: '', operation: undefined }
+const DEFAULT_STATE = { currentResult: 0, operandOne: '', operandTwo: '', operation: undefined }
 
-export function reducer(state = defaultState, { type, operand }) {
-  const expressionExists = (state.operandOne !== defaultState.operandOne &&
-    state.operandTwo !== defaultState.operandTwo && state.operation !== undefined)
+export function reducer(state = DEFAULT_STATE, { type, operand }) {
+  const expressionExists = (state.operandOne !== DEFAULT_STATE.operandOne &&
+    state.operandTwo !== DEFAULT_STATE.operandTwo && state.operation !== undefined)
 
   switch (type) {
-    case CLEAR: return defaultState
+    case CLEAR: return DEFAULT_STATE
     case BUILD_OPERAND:
       return !state.operation ?
         { ...state, operandOne: state.operandOne.concat(operand), currentResult: state.operandOne.concat(operand) }
@@ -15,32 +15,32 @@ export function reducer(state = defaultState, { type, operand }) {
 
     case ADD:
       if (expressionExists) {
-        const currentResult = state.operation(state.operandOne, state.operandTwo).toString()
-        return { currentResult, operandOne: currentResult, operandTwo: defaultState.operandTwo, operation: add }
+        const currentResult = state.operation(state.operandOne, state.operandTwo)
+        return { currentResult, operandOne: currentResult, operandTwo: DEFAULT_STATE.operandTwo, operation: add }
       }
       return { ...state, operation: add }
 
     case DIVIDE:
       if (expressionExists) {
-        const currentResult = state.operation(state.operandOne, state.operandTwo).toString()
-        return { currentResult, operandOne: currentResult, operandTwo: defaultState.operandTwo, operation: divide }
+        const currentResult = state.operation(state.operandOne, state.operandTwo)
+        return { currentResult, operandOne: currentResult, operandTwo: DEFAULT_STATE.operandTwo, operation: divide }
       }
       return { ...state, operation: divide }
 
     case MULTIPLY:
       if (expressionExists) {
-        const currentResult = state.operation(state.operandOne, state.operandTwo).toString()
-        return { currentResult, operandOne: currentResult, operandTwo: defaultState.operandTwo, operation: multiply }
+        const currentResult = state.operation(state.operandOne, state.operandTwo)
+        return { currentResult, operandOne: currentResult, operandTwo: DEFAULT_STATE.operandTwo, operation: multiply }
       }
       return { ...state, operation: multiply }
 
     case SUBTRACT:
       if (expressionExists) {
-        const currentResult = state.operation(state.operandOne, state.operandTwo).toString()
-        return { currentResult, operandOne: currentResult, operandTwo: defaultState.operandTwo, operation: subtract }
+        const currentResult = state.operation(state.operandOne, state.operandTwo)
+        return { currentResult, operandOne: currentResult, operandTwo: DEFAULT_STATE.operandTwo, operation: subtract }
       }
       return { ...state, operation: subtract }
-    // getting 0.0001 presented instead of 0.000currentResult -- but currentResult is 0.000currentResult -- hm?
+
     case PERCENT:
       return expressionExists ?
         { ...state, currentResult: percentify(state.currentResult), operandTwo: percentify(state.operandTwo) }
@@ -54,8 +54,8 @@ export function reducer(state = defaultState, { type, operand }) {
         { ...state, currentResult: negate(state.currentResult), operandOne: negate(state.operandOne) }
 
     case SOLVE:
-      const currentResult = state.operation(state.operandOne, state.operandTwo).toString()
-      return { ...defaultState, currentResult, operandOne: currentResult }
+      const currentResult = state.operation(state.operandOne, state.operandTwo)
+      return { ...DEFAULT_STATE, currentResult, operandOne: currentResult }
 
     default: return state
   }

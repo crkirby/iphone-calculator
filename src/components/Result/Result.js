@@ -1,6 +1,6 @@
 import React from 'react';
 
-let occurence = (str, pattern) => {
+let shrink = (str) => {
 	let myStyle = {
 		fontSize:"40px",
 		textAlign: "right",
@@ -34,15 +34,12 @@ let occurence = (str, pattern) => {
 	
 }
 
-const result = (props) => {
+const Result = (props) => {
 	return (
-		<span style={occurence(props.output.toLocaleString(), ",")}> 
-			{ 
-				props.output.toLocaleString().length < 26 ? 
-				props.output.toLocaleString() : <code>"Big number error"</code> 
-			} 
+		<span style={shrink(props.output.toLocaleString())}>
+			{ props.output.toLocaleString() } 
 		</span>
 	);
 };
 
-export default result;
+export default Result;
