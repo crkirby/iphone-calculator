@@ -15,8 +15,8 @@ class Calculator extends Component {
 
 				<div className="row">
 					<div onClick={this.props.clear} className="options">C</div>
-					<div className="options" onClick={() => console.log('WIP')}>±</div>
-					<div className="options" onClick={() => console.log('WIP')}>%</div>
+					<div className="options" onClick={this.props.flipSign}>±</div>
+					<div className="options" onClick={this.props.percent}>%</div>
 					<div className="operators" onClick={this.props.divide}>÷</div>
 				</div>
 
