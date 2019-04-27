@@ -8,10 +8,12 @@ export function reducer(state = DEFAULT_STATE, { type, operand }) {
   switch (type) {
     case CLEAR: return DEFAULT_STATE
     case BUILD_OPERAND:
-      return !state.operation ?
-        { ...state, operandOne: state.operandOne.concat(operand), currentResult: state.operandOne.concat(operand) }
-        :
-        { ...state, operandTwo: state.operandTwo.concat(operand), currentResult: state.operandTwo.concat(operand) }
+      try {
+        return !state.operation ?
+          { ...state, operandOne: state.operandOne.concat(operand), currentResult: state.operandOne.concat(operand) }
+          :
+          { ...state, operandTwo: state.operandTwo.concat(operand), currentResult: state.operandTwo.concat(operand) }
+      } catch (e) { return { ...state } }
 
     case ADD:
       if (expressionExists) {
@@ -54,8 +56,10 @@ export function reducer(state = DEFAULT_STATE, { type, operand }) {
         { ...state, currentResult: negate(state.currentResult), operandOne: negate(state.operandOne) }
 
     case SOLVE:
-      const currentResult = state.operation(state.operandOne, state.operandTwo)
-      return { ...DEFAULT_STATE, currentResult, operandOne: currentResult }
+      try {
+        const currentResult = state.operation(state.operandOne, state.operandTwo)
+        return { ...DEFAULT_STATE, currentResult, operandOne: currentResult }
+      } catch (e) { return { ...state } }
 
     default: return state
   }
