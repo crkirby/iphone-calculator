@@ -1,4 +1,4 @@
-const { createStore } = require('redux')
-const { reducer } = require('./reducers')
+import { createStore } from 'redux'
+import calculatorReducer from './reducers'
 
-export default createStore(reducer)
+export default createStore(calculatorReducer)

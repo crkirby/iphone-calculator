@@ -1,9 +1,11 @@
-export const ADD = 'ADD'
-export const BUILD_OPERAND = 'BUILD_OPERAND'
-export const CLEAR = 'CLEAR'
-export const DIVIDE = 'DIVIDE'
-export const FLIP_SIGN = 'FLIP_SIGN'
-export const MULTIPLY = 'MULTIPLY'
-export const PERCENT= 'PERCENT'
-export const SOLVE = 'SOLVE'
-export const SUBTRACT = 'SUBTRACT'
+export default {
+  ADD: 'ADD',
+  BUILD_OPERAND: 'BUILD_OPERAND',
+  CLEAR: 'CLEAR',
+  DIVIDE: 'DIVIDE',
+  FLIP_SIGN: 'FLIP_SIGN',
+  MULTIPLY: 'MULTIPLY',
+  PERCENT: 'PERCENT',
+  SOLVE: 'SOLVE',
+  SUBTRACT: 'SUBTRACT'
+}

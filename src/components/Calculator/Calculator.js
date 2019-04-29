@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Result from '../Result/Result'
+import Result from './Result/Result'
 import mapDispatchToProps from '../../store/actions'
 import './Calculator.css';
 

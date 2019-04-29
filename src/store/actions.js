@@ -1,17 +1,15 @@
-const { ADD, BUILD_OPERAND, CLEAR, DIVIDE, FLIP_SIGN, MULTIPLY, PERCENT, SOLVE, SUBTRACT } = require('./types')
+import actionCreators from './creators'
 
-const mapDispatchToProps = dispatch => {
+export default dispatch => {
   return {
-    add: () => dispatch({ type: ADD }),
-    buildOperand: operand => dispatch({ type: BUILD_OPERAND, operand }),
-    clear: () => dispatch({ type: CLEAR }),
-    divide: () => dispatch({ type: DIVIDE }),
-    flipSign: () => dispatch({ type: FLIP_SIGN }),
-    multiply: () => dispatch({ type: MULTIPLY }),
-    percent: () => dispatch({ type: PERCENT }),
-    solve: () => dispatch({ type: SOLVE }),
-    subtract: () => dispatch({ type: SUBTRACT })
+    add: () => dispatch(actionCreators.add()),
+    buildOperand: operand => dispatch(actionCreators.buildOperand(operand)),
+    clear: () => dispatch(actionCreators.clear()),
+    divide: () => dispatch(actionCreators.divide()),
+    flipSign: () => dispatch(actionCreators.flipSign()),
+    multiply: () => dispatch(actionCreators.multiply()),
+    percent: () => dispatch(actionCreators.percent()),
+    solve: () => dispatch(actionCreators.solve()),
+    subtract: () => dispatch(actionCreators.subtract())
   }
 }
-
-export default mapDispatchToProps
